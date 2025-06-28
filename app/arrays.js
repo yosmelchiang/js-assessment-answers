@@ -20,7 +20,17 @@ exports.arraysAnswers = {
   },
 
   remove: function(arr, item) {
+    const newArr = [];
 
+    // For loop
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i] !== item) newArr.push(arr[i])
+    }
+
+    // Array.prototype.filter()
+    // return arr.filter(i => i !== item)
+    
+    return newArr;
   },
 
   removeWithoutCopy: function(arr, item) {
