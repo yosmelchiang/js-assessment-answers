@@ -103,10 +103,23 @@ exports.arraysAnswers = {
   },
 
   square: function (arr) {
+    const newArr = [];
 
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      newArr.push(element * element)
+    }
+
+    return newArr;
   },
 
   findAllOccurrences: function (arr, target) {
+    const newArr = [];
 
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i] === target) newArr.push(arr.indexOf(target, i))
+    }
+
+    return newArr;
   }
 };
