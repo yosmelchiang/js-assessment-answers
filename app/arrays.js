@@ -97,7 +97,6 @@ exports.arraysAnswers = {
 
     for (let i = 0; i < arr.length; i++) {
       newArr.includes(arr[i]) ? duplicates.includes(arr[i]) ? null : duplicates.push(arr[i]) : newArr.push(arr[i])
-      newArr.includes(arr[i]) ? duplicates.push(arr[i]):newArr.push(arr[i])
     }
 
     return duplicates;
