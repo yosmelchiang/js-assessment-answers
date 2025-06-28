@@ -34,11 +34,15 @@ exports.arraysAnswers = {
   },
 
   removeWithoutCopy: function(arr, item) {
-
+    
+    // We iterate backwards and and remove items backwards to avoid shifting indexes in the original array
+    for(let i = arr.length; i >= 0; i--) {
+      if(arr[i] === item) arr.splice(i, 1)
+    }
+    return arr
   },
 
   append: function(arr, item) {
-
   },
 
   truncate: function(arr) {
