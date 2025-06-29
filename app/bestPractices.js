@@ -9,7 +9,7 @@ exports = typeof window === 'undefined' ? global : window;
 
 exports.bestPracticesAnswers = {
   globals: function() {
-    myObject = {
+    const myObject = {
       name: 'Jory'
     };
 
@@ -17,10 +17,16 @@ exports.bestPracticesAnswers = {
   },
 
   parseInt: function(num) {
-    return parseInt(num);
+    // JS assumes 10 by defalt, uness the input has a prefix of 0x, which then will default to heximal number (radix 16)
+    // Its good practice to always provide a radix to avoid unexpected results
+    // Radix 2 is for binary
+    // Radix 10 is for decimal
+    // Radix 16 is for hexadecimal
+    // praseInt reads from left to right, if the first character can tbe converted it returns NaN
+    return parseInt(num, 10);
   },
 
   identity: function(val1, val2) {
-
+    return val1 === val2
   }
 };
