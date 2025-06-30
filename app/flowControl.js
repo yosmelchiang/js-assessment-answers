@@ -2,7 +2,6 @@ exports = typeof window === 'undefined' ? global : window;
 
 exports.flowControlAnswers = {
   fizzBuzz: function(num) {
-    console.log(num)
     if(!num || isNaN(num)) return false
 
     if(num % 3 === 0 && num % 5 === 0) return 'fizzbuzz'

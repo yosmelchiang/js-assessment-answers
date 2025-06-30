@@ -24,6 +24,7 @@ describe('functions', function() {
     var speak = function() {
       return sayIt(this.greeting, this.name, '!!!');
     };
+    
     var obj = {
       greeting: 'Hello',
       name: 'Rebecca'
