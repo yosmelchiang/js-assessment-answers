@@ -23,7 +23,19 @@ exports.functionsAnswers = {
   },
 
   makeClosures: function(arr, fn) {
+    // A closure is a function, that when created, it remembers the reference to the variables that it was created with
+    const newArr = [];
 
+    for(let i = 0; i < arr.length; i++) {
+      
+      function square() {
+        return fn(arr[i])
+      }
+
+      newArr.push(square)
+    }
+
+    return newArr;
   },
 
   partial: function(fn, str1, str2) {
