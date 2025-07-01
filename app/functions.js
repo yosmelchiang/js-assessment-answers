@@ -39,15 +39,42 @@ exports.functionsAnswers = {
   },
 
   partial: function(fn, str1, str2) {
-
+    return function(str3) {
+      return fn(str1, str2, str3)
+    }
   },
 
   useArguments: function() {
+    let sum = 0;
 
+    // arguments is an array like object
+    // that holds the parameters of which the function has been called with
+    // it can only be used with non-arrow functions
+    
+    // We can iterate it by index just as we would with an array
+
+    // for(let i = 0; i < arguments.length; i++) {
+    //   const value = arguments[i]
+    //   if(value) sum += value
+    // }
+
+    // We can also use for-of
+    for(const arg of arguments) {
+      if(arg) sum += arg
+    }
+
+    return sum;
   },
 
   callIt: function(fn) {
+    // Function.prototype.apply()
 
+    // Destructuring arguments so we can .apply the arguments to fn
+    const [ _, ...args] = arguments
+    
+    // Apply will call the function with an arbitray number of arguments
+    // we are not setting the this context here, so we use null
+    return fn.apply(null, args)
   },
 
   partialUsingArguments: function(fn) {
