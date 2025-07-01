@@ -93,31 +93,31 @@ exports.functionsAnswers = {
 
   },
 
+  // This function accepts a function which asks for multiple parameters
+  // We intend to curry it by breaking it down into sequences of functions that handle each parameter individually
+
+  // In order to successfully launch fn, we need 3 parameters
+  // However, if curryIt is called with any amount of parameters less than 3, we cant use fn 
+  // So we must collect them, until we can use them all at once
+
+  // That means we need to define a function that collects arguments
+  // We then check if it has enough arguments to call fn, if it doesnt
+  // call curry again to save the function that has a track of current arguments
   curryIt: function(fn) {
-    // Get the number of arguments the original function needs
-    const expectedArgs = fn.length;
 
-    // Inner function that collects arguments
-    // Returns a function that takes 1 argument
-      // The argument collected is added to the array
-    // If we got enough args for the fn function, call it
-      // if not, return another function that will collect the next arg
-    // For each round, we get a new funtion that taskes 1 argument each
-    function currier(collectedArgs) {
-      
-      // Function that takes exactly 1 arg
-      return function (arg) {
-        const newArgs = [...collectedArgs, arg]; // An array containing collected args and the newly added arg when the function is called
-        
-        // Once newArgs got exactly the length of 3, which is what curryMe takes, call it
-        if(newArgs.length === expectedArgs) {
-          return fn(...newArgs)
+    function curry(colledtedArgs) { // Helper function that keeps track of the arguments collected so far
+      return function(arg) {
+        const newArr = [...colledtedArgs, arg];
+
+        if(fn.length !== newArr.length) {
+          return curry(newArr)
         } else {
-          return currier(newArgs); // Keep collecting
+          return fn(...newArr)
         }
-      }
-    }
 
-    return currier([]);
+      } 
+    };
+
+    return curry([]);// Initially kicking off curry with an empty array
   }
 };
