@@ -94,6 +94,19 @@ exports.functionsAnswers = {
   },
 
   curryIt: function(fn) {
+    const args = [];
 
+    const curried = function(arg) {
+      
+      args.push(arg)
+
+      if(args.length === fn.length) {
+        return fn(...args)
+      }
+
+      return curried;
+    }
+
+    return curried
   }
 };
