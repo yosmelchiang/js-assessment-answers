@@ -77,7 +77,19 @@ exports.functionsAnswers = {
     return fn.apply(null, args)
   },
 
-  partialUsingArguments: function(fn) {
+  partialUsingArguments: function(fn, ...outerArgs) {
+    
+    // Outer function
+    // A function will always be passed as the first param to the outer function
+    // Additional arguments might or might not be passed after the function
+    // We use a rest operator to capture any extra arguments
+
+    // Inner function
+    // No function will be passed here, only an arbitrary number of arguments
+    // We call fn by combining both outerArguments and innerArguments
+    return function(...innerArgs) {
+      return fn(...outerArgs, ...innerArgs)
+    }
 
   },
 
