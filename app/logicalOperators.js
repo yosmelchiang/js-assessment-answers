@@ -9,7 +9,7 @@ exports.logicalOperatorsAnswers = {
 
   and: function(a, b) {
     // The logical AND operator returns true if only all operands are true
-    console.log(a && b)
+    // console.log(a && b)
     return a && b
   }
 };
