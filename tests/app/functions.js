@@ -140,7 +140,6 @@ describe('functions', function() {
     expect(result.length).to.eql(1);
 
     result = functionsAnswers.curryIt(curryMe)(a)(b)(c);
-    console.log(result)
     expect(typeof result).to.eql('number');
     expect(result).to.eql(curryMe(a, b, c));
   });
